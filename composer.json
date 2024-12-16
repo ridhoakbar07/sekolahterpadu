@@ -12,6 +12,7 @@
         "bezhansalleh/filament-shield": "^3.3",
         "dotswan/filament-laravel-pulse": "^1.1",
         "filament/filament": "^3.2",
+        "filament/spatie-laravel-google-fonts-plugin": "^3.2",
         "hugomyb/filament-media-action": "^3.1",
         "laravel/framework": "^11.31",
         "laravel/pulse": "^1.2",
