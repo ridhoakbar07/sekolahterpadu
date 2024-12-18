@@ -52,7 +52,8 @@ class User extends Authenticatable implements FilamentUser, CanLoginDirectly
 
     public function canAccessPanel(Panel $panel): bool
     {
-        return $this->isDeveloper() || $this->isAdmin() || $this->isAdminSekolah() || $this->isUser();
+        // return $this->isDeveloper() || $this->isAdmin() || $this->isAdminSekolah() || $this->isUser();
+        return true;
     }
 
     public function canLoginDirectly(): bool
