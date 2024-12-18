@@ -81,6 +81,11 @@ return new class extends Migration {
      */
     public function down(): void
     {
+        Schema::table('siswas', function (Blueprint $table) {
+            $table->dropForeign(['ortu_id']);
+            $table->dropColumn(['ortu_id']);
+        });
+
         Schema::dropIfExists('siswa_kelas');
         Schema::dropIfExists('kelas');
         Schema::dropIfExists('units');
