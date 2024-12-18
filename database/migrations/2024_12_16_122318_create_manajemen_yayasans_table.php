@@ -74,6 +74,13 @@ return new class extends Migration {
             $table->foreignUuid('kelas_id')->constrained('kelas');
             $table->timestamps();
         });
+
+        Schema::create('admin_sekolahs', function (Blueprint $table) {
+            $table->uuid('id')->primary();
+            $table->foreignId('user_id')->constrained('users');
+            $table->foreignUuid('sekolah_id')->constrained('sekolahs');
+            $table->timestamps();
+        });
     }
 
     /**
@@ -81,7 +88,14 @@ return new class extends Migration {
      */
     public function down(): void
     {
+        Schema::table('siswas', function (Blueprint $table) {
+            $table->dropForeign(['ortu_id']);
+            $table->dropColumn(['ortu_id']);
+        });
+
+        Schema::dropIfExists('admin_sekolahs');
         Schema::dropIfExists('siswa_kelas');
+        Schema::dropIfExists('siswas');
         Schema::dropIfExists('kelas');
         Schema::dropIfExists('units');
         Schema::dropIfExists('sekolahs');
