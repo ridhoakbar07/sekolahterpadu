@@ -93,7 +93,10 @@ return new class extends Migration {
             $table->dropColumn(['ortu_id']);
         });
 
+<<<<<<< HEAD
         Schema::dropIfExists('admin_sekolahs');
+=======
+>>>>>>> 2c70b077e845b33dfc0b17bf2b315f6dada9c6a6
         Schema::dropIfExists('siswa_kelas');
         Schema::dropIfExists('siswas');
         Schema::dropIfExists('kelas');
