@@ -11,7 +11,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Spatie\Permission\Traits\HasRoles;
 
-class User extends Authenticatable implements FilamentUser, CanLoginDirectly
+class User extends Authenticatable implements FilamentUser
 {
     /** @use HasFactory<\Database\Factories\UserFactory> */
     use HasFactory, Notifiable, HasRoles;
@@ -54,10 +54,5 @@ class User extends Authenticatable implements FilamentUser, CanLoginDirectly
     {
         // return $this->isDeveloper() || $this->isAdmin() || $this->isAdminSekolah() || $this->isUser();
         return true;
-    }
-
-    public function canLoginDirectly(): bool
-    {
-        return str($this->email)->endsWith('@mail.com');
     }
 }
