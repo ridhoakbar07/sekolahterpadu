@@ -65,13 +65,15 @@ class AdminPanelProvider extends PanelProvider
             ])
             ->navigationGroups([
                 NavigationGroup::make()
-                    ->label('Management')
+                    ->label('Management'),
+                NavigationGroup::make()
+                    ->label('Settings')
+                    ->collapsed(),
+                NavigationGroup::make()
+                    ->label('Pengaturan')
                     ->collapsed(),
                 NavigationGroup::make()
                     ->label('Monitoring')
-                    ->collapsed(),
-                NavigationGroup::make()
-                    ->label('Settings')
                     ->collapsed(),
             ]);
     }

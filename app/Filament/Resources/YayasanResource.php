@@ -5,6 +5,7 @@ namespace App\Filament\Resources;
 use App\Filament\Resources\YayasanResource\Pages;
 use App\Filament\Resources\YayasanResource\RelationManagers;
 use App\Models\Yayasan;
+use BezhanSalleh\FilamentShield\Contracts\HasShieldPermissions;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -14,12 +15,32 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use MarcoGermani87\FilamentCaptcha\Forms\Components\CaptchaField;
 
-class YayasanResource extends Resource
+class YayasanResource extends Resource implements HasShieldPermissions
 {
     protected static ?string $model = Yayasan::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-building-office-2';
 
+    protected static ?string $modelLabel = 'Yayasan';
+
+    protected static ?string $navigationLabel = 'Yayasan';
+
+    protected static ?int $navigationSort = 0;
+
+    protected static ?string $navigationGroup = 'Management';
+
+    public static function getPermissionPrefixes(): array
+    {
+        return [
+            'view',
+            'view_any',
+            'create',
+            'update',
+            'delete',
+            'delete_any',
+        ];
+    }
+    
     public static function form(Form $form): Form
     {
         return $form
