@@ -9,4 +9,11 @@ use Filament\Resources\Pages\CreateRecord;
 class CreateYayasan extends CreateRecord
 {
     protected static string $resource = YayasanResource::class;
+
+    protected static bool $canCreateAnother = false;
+
+    protected function getRedirectUrl(): string
+    {
+        return static::getResource()::getUrl('index');
+    }
 }

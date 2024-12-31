@@ -3,19 +3,14 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\YayasanResource\Pages;
-use App\Filament\Resources\YayasanResource\RelationManagers;
 use App\Models\Yayasan;
-use BezhanSalleh\FilamentShield\Contracts\HasShieldPermissions;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
-use MarcoGermani87\FilamentCaptcha\Forms\Components\CaptchaField;
 
-class YayasanResource extends Resource implements HasShieldPermissions
+class YayasanResource extends Resource
 {
     protected static ?string $model = Yayasan::class;
 
@@ -29,18 +24,6 @@ class YayasanResource extends Resource implements HasShieldPermissions
 
     protected static ?string $navigationGroup = 'Management';
 
-    public static function getPermissionPrefixes(): array
-    {
-        return [
-            'view',
-            'view_any',
-            'create',
-            'update',
-            'delete',
-            'delete_any',
-        ];
-    }
-    
     public static function form(Form $form): Form
     {
         return $form
@@ -70,9 +53,9 @@ class YayasanResource extends Resource implements HasShieldPermissions
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('id')
-                    ->label('ID')
-                    ->searchable(),
+                Tables\Columns\TextColumn::make('no')
+                    ->label('No')
+                    ->rowIndex(),
                 Tables\Columns\TextColumn::make('nama')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('tanggal_pendirian')
@@ -99,7 +82,9 @@ class YayasanResource extends Resource implements HasShieldPermissions
                 //
             ])
             ->actions([
-                Tables\Actions\EditAction::make(),
+                Tables\Actions\EditAction::make()
+                    ->successRedirectUrl(route('filament.admin.resources.yayasans.index')),
+                Tables\Actions\DeleteAction::make(),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([

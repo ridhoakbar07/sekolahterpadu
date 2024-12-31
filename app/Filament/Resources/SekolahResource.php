@@ -57,9 +57,7 @@ class SekolahResource extends Resource
                         Forms\Components\Textarea::make('alamat')
                             ->required()
                             ->columnSpanFull(),
-                    ])
-                    ->columnSpan(!auth()->user()->isAdminSekolah() ? 2 : 3)
-                    ->columns(4),
+                    ]),
                 Forms\Components\Group::make()
                     ->schema([
                         Forms\Components\Section::make("Pengelola")
@@ -73,48 +71,11 @@ class SekolahResource extends Resource
                                     ->multiple()
                                     ->maxItems(2)
                                     ->relationship('admins')
-                                    ->createOptionForm([
-                                        Forms\Components\Fieldset::make('User')
-                                            ->schema([
-                                                Forms\Components\TextInput::make('name')
-                                                    ->required()
-                                                    ->maxLength(255),
-                                                Forms\Components\TextInput::make('email')
-                                                    ->email()
-                                                    ->required()
-                                                    ->maxLength(255),
-                                                Forms\Components\TextInput::make('password')
-                                                    ->password()
-                                                    ->required()
-                                                    ->maxLength(255),
-                                                Forms\Components\Select::make('role')
-                                                    ->options(
-                                                        ['Admin_Sekolah' => 'Admin Sekolah']
-                                                    )
-                                                    ->required(),
-                                            ]),
-                                        Forms\Components\Fieldset::make('Profile')
-                                            ->relationship('profile')
-                                            ->schema([
-                                                Forms\Components\TextInput::make('nama_awal')
-                                                    ->required()
-                                                    ->maxLength(255),
-                                                Forms\Components\TextInput::make('nama_akhir')
-                                                    ->required()
-                                                    ->maxLength(255),
-                                                Forms\Components\Textarea::make('alamat')
-                                                    ->required()
-                                                    ->columnSpanFull(),
-                                                Forms\Components\TextInput::make('kontak')
-                                                    ->required()
-                                                    ->maxLength(255),
-                                            ])
-                                    ])
                                     ->getOptionLabelFromRecordUsing(fn(Model $record) => $record->profile ? $record->profile->nama_lengkap : "username: " . $record->name)
                                     ->preload()
                                     ->searchable(),
                             ])
-                            ->visible(!auth()->user()->isAdminSekolah())
+                            ->visible(!auth()->user()->hasRole('Admin Sekolah'))
                             ->columnSpan(1),
                     ]),
             ])

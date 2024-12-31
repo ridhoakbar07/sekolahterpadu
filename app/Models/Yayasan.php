@@ -13,6 +13,8 @@ class Yayasan extends Model
 {
     use HasUuids, HasFactory;
 
+    protected $fillable = ['nama', 'tanggal_pendirian', 'alamat', 'telp', 'email', 'visi_misi', 'no_status_hukum', 'ketua_yayasan'];
+
     public function sekolahs(): HasMany
     {
         return $this->hasMany(Sekolah::class);
