@@ -2,6 +2,7 @@
 
 namespace App\Filament\Pages;
 
+use BezhanSalleh\FilamentShield\Traits\HasPageShield;
 use Filament\Pages\Page;
 use Dotswan\FilamentLaravelPulse\Widgets\PulseCache;
 use Dotswan\FilamentLaravelPulse\Widgets\PulseExceptions;
@@ -18,7 +19,7 @@ use Filament\Support\Enums\ActionSize;
 
 class PulseDashboard extends Page
 {
-    use HasFiltersAction;
+    use HasFiltersAction, HasPageShield;
 
     protected static string $view = 'filament.pages.pulse-dashboard';
 

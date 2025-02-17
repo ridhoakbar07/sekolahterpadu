@@ -11,12 +11,20 @@ return new class extends Migration {
     public function up(): void
     {
         //create table pos terima
-        Schema::create('pos_terimas', function (Blueprint $table) {
+        Schema::create('pos_masuks', function (Blueprint $table) {
             $table->uuid('id')->primary();
             $table->string('nama_pos');
             $table->decimal('biaya', total: 20, places: 2);
             $table->enum('skema_pembayaran', ['Bulanan', 'Tahunan', 'Sekali']);
             $table->foreignUuid('unit_id')->nullable()->constrained('units');
+            $table->timestamps();
+        });
+
+        //create table pos terima
+        Schema::create('pos_keluars', function (Blueprint $table) {
+            $table->uuid('id')->primary();
+            $table->string('nama_pos');
+            $table->decimal('biaya', total: 20, places: 2);
             $table->timestamps();
         });
 
@@ -70,7 +78,8 @@ return new class extends Migration {
      */
     public function down(): void
     {
-        Schema::dropIfExists('pos_terimas');
+        Schema::dropIfExists('pos_masuks');
+        Schema::dropIfExists('pos_keluars');
         Schema::dropIfExists('detail_kas_masuks');
         Schema::dropIfExists('kas_masuks');
         Schema::dropIfExists('tagihans');
