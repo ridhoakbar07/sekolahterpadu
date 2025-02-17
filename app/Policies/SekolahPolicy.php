@@ -3,10 +3,10 @@
 namespace App\Policies;
 
 use App\Models\User;
-use App\Models\Yayasan;
+use App\Models\Sekolah;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
-class YayasanPolicy
+class SekolahPolicy
 {
     use HandlesAuthorization;
 
@@ -15,15 +15,15 @@ class YayasanPolicy
      */
     public function viewAny(User $user): bool
     {
-        return $user->can('view_any_yayasan');
+        return $user->can('view_any_sekolah');
     }
 
     /**
      * Determine whether the user can view the model.
      */
-    public function view(User $user, Yayasan $yayasan): bool
+    public function view(User $user, Sekolah $sekolah): bool
     {
-        return $user->can('view_yayasan');
+        return $user->can('view_sekolah');
     }
 
     /**
@@ -31,23 +31,23 @@ class YayasanPolicy
      */
     public function create(User $user): bool
     {
-        return $user->can('create_yayasan');
+        return $user->can('create_sekolah');
     }
 
     /**
      * Determine whether the user can update the model.
      */
-    public function update(User $user, Yayasan $yayasan): bool
+    public function update(User $user, Sekolah $sekolah): bool
     {
-        return $user->can('update_yayasan');
+        return $user->can('update_sekolah');
     }
 
     /**
      * Determine whether the user can delete the model.
      */
-    public function delete(User $user, Yayasan $yayasan): bool
+    public function delete(User $user, Sekolah $sekolah): bool
     {
-        return $user->can('delete_yayasan');
+        return $user->can('delete_sekolah');
     }
 
     /**
@@ -55,19 +55,15 @@ class YayasanPolicy
      */
     public function deleteAny(User $user): bool
     {
-        return $user->can('delete_any_yayasan');
+        return $user->can('delete_any_sekolah');
     }
 
     /**
      * Determine whether the user can permanently delete.
      */
-    public function forceDelete(User $user, Yayasan $yayasan): bool
+    public function forceDelete(User $user, Sekolah $sekolah): bool
     {
-<<<<<<< HEAD
-        return $user->can('force_delete_yayasan');
-=======
         return $user->can('{{ ForceDelete }}');
->>>>>>> 5e51920c0bfacece3891512f464b93c2323dc58c
     }
 
     /**
@@ -75,23 +71,15 @@ class YayasanPolicy
      */
     public function forceDeleteAny(User $user): bool
     {
-<<<<<<< HEAD
-        return $user->can('force_delete_any_yayasan');
-=======
         return $user->can('{{ ForceDeleteAny }}');
->>>>>>> 5e51920c0bfacece3891512f464b93c2323dc58c
     }
 
     /**
      * Determine whether the user can restore.
      */
-    public function restore(User $user, Yayasan $yayasan): bool
+    public function restore(User $user, Sekolah $sekolah): bool
     {
-<<<<<<< HEAD
-        return $user->can('restore_yayasan');
-=======
         return $user->can('{{ Restore }}');
->>>>>>> 5e51920c0bfacece3891512f464b93c2323dc58c
     }
 
     /**
@@ -99,23 +87,15 @@ class YayasanPolicy
      */
     public function restoreAny(User $user): bool
     {
-<<<<<<< HEAD
-        return $user->can('restore_any_yayasan');
-=======
         return $user->can('{{ RestoreAny }}');
->>>>>>> 5e51920c0bfacece3891512f464b93c2323dc58c
     }
 
     /**
      * Determine whether the user can replicate.
      */
-    public function replicate(User $user, Yayasan $yayasan): bool
+    public function replicate(User $user, Sekolah $sekolah): bool
     {
-<<<<<<< HEAD
-        return $user->can('replicate_yayasan');
-=======
         return $user->can('{{ Replicate }}');
->>>>>>> 5e51920c0bfacece3891512f464b93c2323dc58c
     }
 
     /**
@@ -123,10 +103,6 @@ class YayasanPolicy
      */
     public function reorder(User $user): bool
     {
-<<<<<<< HEAD
-        return $user->can('reorder_yayasan');
-=======
         return $user->can('{{ Reorder }}');
->>>>>>> 5e51920c0bfacece3891512f464b93c2323dc58c
     }
 }

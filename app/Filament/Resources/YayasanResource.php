@@ -3,22 +3,26 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\YayasanResource\Pages;
-use App\Filament\Resources\YayasanResource\RelationManagers;
 use App\Models\Yayasan;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
-use MarcoGermani87\FilamentCaptcha\Forms\Components\CaptchaField;
 
 class YayasanResource extends Resource
 {
     protected static ?string $model = Yayasan::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-building-office-2';
+
+    protected static ?string $modelLabel = 'Yayasan';
+
+    protected static ?string $navigationLabel = 'Yayasan';
+
+    protected static ?int $navigationSort = 0;
+
+    protected static ?string $navigationGroup = 'Management';
 
     public static function form(Form $form): Form
     {
@@ -49,9 +53,9 @@ class YayasanResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('id')
-                    ->label('ID')
-                    ->searchable(),
+                Tables\Columns\TextColumn::make('no')
+                    ->label('No')
+                    ->rowIndex(),
                 Tables\Columns\TextColumn::make('nama')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('tanggal_pendirian')
@@ -78,7 +82,9 @@ class YayasanResource extends Resource
                 //
             ])
             ->actions([
-                Tables\Actions\EditAction::make(),
+                Tables\Actions\EditAction::make()
+                    ->successRedirectUrl(route('filament.admin.resources.yayasans.index')),
+                Tables\Actions\DeleteAction::make(),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([

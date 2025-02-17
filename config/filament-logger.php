@@ -83,7 +83,7 @@ return [
         'guards' => [
             'web',
             'panel:admin',
-            'auth:accounts'
+            'auth:accounts',
         ],
 
         /*

@@ -15,7 +15,12 @@ class ActivityPolicy
      */
     public function viewAny(User $user): bool
     {
+<<<<<<< HEAD
         return $user->can('view_any_activity');
+=======
+        // return $user->can('view_any_activity');
+        return $user->hasRole('Administrator');
+>>>>>>> 5e51920c0bfacece3891512f464b93c2323dc58c
     }
 
     /**
@@ -23,7 +28,12 @@ class ActivityPolicy
      */
     public function view(User $user, Activity $activity): bool
     {
+<<<<<<< HEAD
         return $user->can('view_activity');
+=======
+        return $user->hasRole('Administrator');
+        // return $user->can('view_activity');
+>>>>>>> 5e51920c0bfacece3891512f464b93c2323dc58c
     }
 
     /**
@@ -63,7 +73,11 @@ class ActivityPolicy
      */
     public function forceDelete(User $user, Activity $activity): bool
     {
+<<<<<<< HEAD
         return $user->can('force_delete_activity');
+=======
+        return $user->can('{{ ForceDelete }}');
+>>>>>>> 5e51920c0bfacece3891512f464b93c2323dc58c
     }
 
     /**
@@ -71,7 +85,11 @@ class ActivityPolicy
      */
     public function forceDeleteAny(User $user): bool
     {
+<<<<<<< HEAD
         return $user->can('force_delete_any_activity');
+=======
+        return $user->can('{{ ForceDeleteAny }}');
+>>>>>>> 5e51920c0bfacece3891512f464b93c2323dc58c
     }
 
     /**
@@ -79,7 +97,11 @@ class ActivityPolicy
      */
     public function restore(User $user, Activity $activity): bool
     {
+<<<<<<< HEAD
         return $user->can('restore_activity');
+=======
+        return $user->can('{{ Restore }}');
+>>>>>>> 5e51920c0bfacece3891512f464b93c2323dc58c
     }
 
     /**
@@ -87,7 +109,11 @@ class ActivityPolicy
      */
     public function restoreAny(User $user): bool
     {
+<<<<<<< HEAD
         return $user->can('restore_any_activity');
+=======
+        return $user->can('{{ RestoreAny }}');
+>>>>>>> 5e51920c0bfacece3891512f464b93c2323dc58c
     }
 
     /**
@@ -95,7 +121,11 @@ class ActivityPolicy
      */
     public function replicate(User $user, Activity $activity): bool
     {
+<<<<<<< HEAD
         return $user->can('replicate_activity');
+=======
+        return $user->can('{{ Replicate }}');
+>>>>>>> 5e51920c0bfacece3891512f464b93c2323dc58c
     }
 
     /**
@@ -103,6 +133,10 @@ class ActivityPolicy
      */
     public function reorder(User $user): bool
     {
+<<<<<<< HEAD
         return $user->can('reorder_activity');
+=======
+        return $user->can('{{ Reorder }}');
+>>>>>>> 5e51920c0bfacece3891512f464b93c2323dc58c
     }
 }

@@ -84,7 +84,11 @@ class UserPolicy
      */
     public function forceDelete(User $user): bool
     {
+<<<<<<< HEAD
         return $user->can('force_delete_user');
+=======
+        return $user->can('{{ ForceDelete }}');
+>>>>>>> 5e51920c0bfacece3891512f464b93c2323dc58c
     }
 
     /**
@@ -95,7 +99,11 @@ class UserPolicy
      */
     public function forceDeleteAny(User $user): bool
     {
+<<<<<<< HEAD
         return $user->can('force_delete_any_user');
+=======
+        return $user->can('{{ ForceDeleteAny }}');
+>>>>>>> 5e51920c0bfacece3891512f464b93c2323dc58c
     }
 
     /**
@@ -106,7 +114,11 @@ class UserPolicy
      */
     public function restore(User $user): bool
     {
+<<<<<<< HEAD
         return $user->can('restore_user');
+=======
+        return $user->can('{{ Restore }}');
+>>>>>>> 5e51920c0bfacece3891512f464b93c2323dc58c
     }
 
     /**
@@ -117,7 +129,11 @@ class UserPolicy
      */
     public function restoreAny(User $user): bool
     {
+<<<<<<< HEAD
         return $user->can('restore_any_user');
+=======
+        return $user->can('{{ RestoreAny }}');
+>>>>>>> 5e51920c0bfacece3891512f464b93c2323dc58c
     }
 
     /**
@@ -128,7 +144,11 @@ class UserPolicy
      */
     public function replicate(User $user): bool
     {
+<<<<<<< HEAD
         return $user->can('replicate_user');
+=======
+        return $user->can('{{ Replicate }}');
+>>>>>>> 5e51920c0bfacece3891512f464b93c2323dc58c
     }
 
     /**
@@ -139,6 +159,10 @@ class UserPolicy
      */
     public function reorder(User $user): bool
     {
+<<<<<<< HEAD
         return $user->can('reorder_user');
+=======
+        return $user->can('{{ Reorder }}');
+>>>>>>> 5e51920c0bfacece3891512f464b93c2323dc58c
     }
 }

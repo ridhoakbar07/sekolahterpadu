@@ -37,8 +37,8 @@ class Sekolah extends Model
 
     protected static function booted(): void
     {
-        static::addGlobalScope('user', function (Builder $query) {
-            if (auth()->check() && auth()->user()->isAdminSekolah()) {
+        static::addGlobalScope('user', implementation: function (Builder $query) {
+            if (auth()->check() && auth()->user()->hasRole('Admin Sekolah')) {
                 $query->whereRelation('admins', 'user_id', '=', auth()->user()->id);
             }
         });
